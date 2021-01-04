@@ -15,6 +15,11 @@ install(TARGETS wixtest
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   )
+set_property(INSTALL "bin/$<TARGET_FILE_NAME:wixtest>"
+  PROPERTY CPACK_START_MENU_SHORTCUTS "wixtest")
+set_property(INSTALL "bin/$<TARGET_FILE_NAME:wixtest>"
+  PROPERTY CPACK_DESKTOP_SHORTCUTS "wixtest"
+  )
 
 add_test(NAME wixcwd COMMAND wixtest)
 
