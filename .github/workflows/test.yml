@@ -37,7 +37,7 @@ jobs:
         run: cmake --build build --config Release --target package
 
       - name: Test
-        run: cmake --build build --config Release --target test
+        run: cmake --verbose --build build --config Release --target test
 
       - name: Upload Package
         uses: actions/upload-artifact@v2
@@ -71,7 +71,7 @@ jobs:
           cmake --build build --config Release --target package
 
       - name: Test
-        run: cmake --build build --config Release --target test
+        run: cmake --verbose --build build --config Release --target test
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
@@ -107,7 +107,7 @@ jobs:
           cmake --build build --config Release --target package
 
       - name: Test
-        run: cmake --build build --config Release --target test
+        run: cmake --verbose --build build --config Release --target test
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
