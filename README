@@ -1,0 +1,4 @@
+This is a minimal example of using CMake and WiX to make an MSI package.
+
+Extracts relevant logic from BRL-CAD's build system.
+
