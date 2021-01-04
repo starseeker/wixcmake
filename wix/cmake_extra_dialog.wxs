@@ -27,7 +27,7 @@
 					</RadioButtonGroup>
 				</Control>
 
-				<?ifdef BUILD_QtDialog ?>
+				<?ifdef BUILD_GUI ?>
 					<Control Id="DesktopShortcutCheckBox" Type="CheckBox" X="20" Y="170" Width="330" Height="18" CheckBoxValue="1" Property="DESKTOP_SHORTCUT_REQUESTED" Text="Create CMake Desktop Icon"/>
 				<?endif ?>
 			</Dialog>
