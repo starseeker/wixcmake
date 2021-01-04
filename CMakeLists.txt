@@ -29,12 +29,25 @@ set(CPACK_PACKAGE_VERSION_PATCH 0)
 # By default, we want debugging information
 set(CPACK_STRIP_FILES FALSE)
 
-# If we're not on Windows, set the install prefix and create
-# TGZ packages by default.  If we are on Windows, try WiX.
 if (WIN32)
+
+  find_package(NSIS)
+  if (NSIS_FOUND)
+    set(CPACK_GENERATOR ${CPACK_GENERATOR} NSIS)
+    set(CPACK_NSIS_PACKAGE_NAME "WixCMake")
+    set(CPACK_NSIS_INSTALL_DIRECTORY "WIXTEST ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}")
+    set(CPACK_SOURCE_DIR "${CMAKE_SOURCE_DIR}")
+    # There is a bug in NSIS that does not handle full unix paths properly. Make
+    # sure there is at least one set of four (4) backslashes.
+    set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/wix\\\\product.ico")
+    set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+    set(CPACK_NSIS_DISPLAY_NAME "WixCMake")
+    set(CPACK_NSIS_MODIFY_PATH ON)
+  endif (NSIS_FOUND)
+
   find_package(Wix)
   if (Wix_FOUND)
-    set(CPACK_GENERATOR WIX)
+    set(CPACK_GENERATOR ${CPACK_GENERATOR} WIX)
     set(CPACK_WIX_LICENSE_RTF "${CMAKE_SOURCE_DIR}/wix/License.rtf")
     set(CPACK_WIX_PRODUCT_ICON "${CMAKE_SOURCE_DIR}/wix/product.ico")
     set(CPACK_WIX_PROGRAM_MENU_FOLDER "WiX-CMake")
@@ -47,12 +60,13 @@ if (WIN32)
       set(CPACK_PACKAGE_FILE_NAME "WixCMake_win32")
       set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY "WixCMake win32")
     endif(CMAKE_CL_64)
-  else (Wix_FOUND)
-    message(FATAL_ERROR "Building on Windows, but unable to find WiX.")
   endif (Wix_FOUND)
+
 else ()
+
   set(CPACK_PACKAGING_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
   set(CPACK_GENERATOR TGZ)
+
 endif ()
 
 include(CPack)
