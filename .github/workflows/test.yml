@@ -41,7 +41,7 @@ jobs:
 
       - name: Test_Install
         run: |
-          msiexec.exe /i D:/a/wixcmake/wixcmake/build/WixCMake_win64.msi /QN /L*V "D:\a\wixcmake\wixcmake\build\install.log"
+          msiexec.exe /i D:\a\wixcmake\wixcmake\build\WixCMake_win64.msi /QN /L*V "D:\a\wixcmake\wixcmake\build\install.log"
           type D:\a\wixcmake\wixcmake\build\install.log
 
       - name: Upload Package
