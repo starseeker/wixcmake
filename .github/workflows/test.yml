@@ -31,8 +31,7 @@ jobs:
 
       - name: Configure
         run: |
-          cmake -S . -B build -G Ninja -D CMAKE_C_COMPILER="cl.exe" -D CMAKE_CXX_COMPILER="cl.exe" -D ENABLE_ALL=ON -D CMAKE_BUILD_TYPE=Release
-          #cmake -S . -B build -D ENABLE_ALL=ON
+          cmake -S . -B build -G Ninja -D CMAKE_C_COMPILER="cl.exe" -D CMAKE_CXX_COMPILER="cl.exe" -D CMAKE_BUILD_TYPE=Release
           powershell Write-VolumeCache C
           powershell Write-VolumeCache D
 
@@ -40,7 +39,7 @@ jobs:
         run: cmake --build build --config Release --target package
 
       - name: Test
-        run: ctest --test-dir build --config Release --verbose
+        run: ctest --test-dir ${{ github.workspace }}/build --config Release --verbose
 
       - name: Upload Package
         uses: actions/upload-artifact@v2
@@ -74,7 +73,7 @@ jobs:
           cmake --build build --config Release --target package
 
       - name: Test
-        run: ctest --test-dir build --config Release --verbose
+        run: ctest --test-dir ${{ github.workspace }}/build --config Release --verbose
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
@@ -110,7 +109,7 @@ jobs:
           cmake --build build --config Release --target package
 
       - name: Test
-        run: ctest --test-dir build --config Release --verbose
+        run: ctest --test-dir ${{ github.workspace }}/build --config Release --verbose
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
