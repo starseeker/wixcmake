@@ -4,12 +4,19 @@ cmake_minimum_required(VERSION 3.12)
 # set CMake project name
 project(WIXTEST)
 
+set(BRLCAD_CMAKE_DIR "${CMAKE_SOURCE_DIR}/CMake")
+list(APPEND CMAKE_MODULE_PATH "${BRLCAD_CMAKE_DIR}")
+
+include(CTest)
+
 add_executable(wixtest wixtest.c)
 install(TARGETS wixtest
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   )
+
+add_test(NAME wixcwd COMMAND wixtest)
 
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Hello World")
 set(CPACK_PACKAGE_VENDOR "Team")
@@ -49,6 +56,8 @@ else ()
 endif ()
 
 include(CPack)
+
+
 
 # Local Variables:
 # tab-width: 8

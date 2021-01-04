@@ -39,6 +39,9 @@ jobs:
       - name: Build
         run: cmake --build build --config Release --target package
 
+      - name: Test
+        run: ctest --test-dir build --config Release --verbose
+
       - name: Upload Package
         uses: actions/upload-artifact@v2
         with:
@@ -69,6 +72,9 @@ jobs:
         run: |
           export PATH=$ENV{GITHUB_WORKSPACE}:$PATH
           cmake --build build --config Release --target package
+
+      - name: Test
+        run: ctest --test-dir build --config Release --verbose
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
@@ -102,6 +108,9 @@ jobs:
         run: |
           export PATH=$ENV{GITHUB_WORKSPACE}:$PATH
           cmake --build build --config Release --target package
+
+      - name: Test
+        run: ctest --test-dir build --config Release --verbose
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
