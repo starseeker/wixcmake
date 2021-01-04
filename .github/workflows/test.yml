@@ -37,7 +37,7 @@ jobs:
         run: cmake --build build --config Release --target package
 
       - name: Test
-        run: ${{ github.workspace }}/build/wixtext.exe
+        run: cmake --build build --config Release --target test
 
       - name: Upload Package
         uses: actions/upload-artifact@v2
@@ -63,7 +63,7 @@ jobs:
       - name: Configure
         run: |
           export PATH=$ENV{GITHUB_WORKSPACE}:$PATH
-          cmake -S . -G Ninja -B build -D ENABLE_ALL=ON -D CMAKE_BUILD_TYPE=Release
+          cmake -S . -G Ninja -B build -D CMAKE_BUILD_TYPE=Release
 
       - name: Build
         run: |
@@ -71,7 +71,7 @@ jobs:
           cmake --build build --config Release --target package
 
       - name: Test
-        run: ${{ github.workspace }}/build/wixtext
+        run: cmake --build build --config Release --target test
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
@@ -107,7 +107,7 @@ jobs:
           cmake --build build --config Release --target package
 
       - name: Test
-        run: ${{ github.workspace }}/build/wixtext
+        run: cmake --build build --config Release --target test
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
