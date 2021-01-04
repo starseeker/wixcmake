@@ -43,6 +43,8 @@ jobs:
         run: |
           msiexec.exe /i D:\a\wixcmake\wixcmake\build\WixCMake_win64.msi /QN /L*V "D:\a\wixcmake\wixcmake\build\install.log"
           type D:\a\wixcmake\wixcmake\build\install.log
+          dir "C:\Program Files"
+          dir "C:\Program Files\WixCMake"
 
       - name: Upload Package
         uses: actions/upload-artifact@v2
