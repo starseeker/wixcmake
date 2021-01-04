@@ -39,12 +39,12 @@ jobs:
       - name: Test
         run: cmake --build build --config Release --target RUN_TESTS --verbose
 
-      - name: Test_Install
-        run: |
-          msiexec.exe /i D:\a\wixcmake\wixcmake\build\WixCMake_win64.msi /QN /L*V "D:\a\wixcmake\wixcmake\build\install.log"
-          type D:\a\wixcmake\wixcmake\build\install.log
-          dir "C:\Program Files"
-          dir "C:\Program Files\WixCMake"
+#     # Unfortunately, this can't work on a github runner because it requires elevated UAC
+#     # privileges to work:  https://superuser.com/questions/1269029/uac-problems-with-msiexec-silent-mode
+#     - name: Test_Install
+#       run: |
+#         msiexec.exe /i D:\a\wixcmake\wixcmake\build\WixCMake_win64.msi /QN /L*V "D:\a\wixcmake\wixcmake\build\install.log"
+#         type D:\a\wixcmake\wixcmake\build\install.log
 
       - name: Upload Package
         uses: actions/upload-artifact@v2
