@@ -37,7 +37,7 @@ jobs:
         run: cmake --build build --config Release --target package
 
       - name: Test
-        run: ctest --test-dir ${{ github.workspace }}/build --config Release --verbose
+        run: ${{ github.workspace }}/build/wixtext.exe
 
       - name: Upload Package
         uses: actions/upload-artifact@v2
@@ -71,7 +71,7 @@ jobs:
           cmake --build build --config Release --target package
 
       - name: Test
-        run: ctest --test-dir ${{ github.workspace }}/build --config Release --verbose
+        run: ${{ github.workspace }}/build/wixtext
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
@@ -107,7 +107,7 @@ jobs:
           cmake --build build --config Release --target package
 
       - name: Test
-        run: ctest --test-dir ${{ github.workspace }}/build --config Release --verbose
+        run: ${{ github.workspace }}/build/wixtext
 
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
