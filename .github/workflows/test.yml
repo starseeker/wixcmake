@@ -39,11 +39,14 @@ jobs:
       - name: Test
         run: cmake --build build --config Release --target RUN_TESTS --verbose
 
+      - name: Test_Install
+        run: msiexec.exe /i D:/a/wixcmake/wixcmake/build/WixCMake_win64.msi /QN /L*V
+
       - name: Upload Package
         uses: actions/upload-artifact@v2
         with:
-          name: BRLCAD_Windows
-          path: ${{ github.workspace }}/build/BRL-CAD*exe
+          name: WixCMake_Windows
+          path: ${{ github.workspace }}/build/WixCMake*msi
 
   linux:
     name: Ubuntu Latest GCC
@@ -76,8 +79,8 @@ jobs:
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
 #       with:
-#         name: BRLCAD_Linux
-#         path: ${{ github.workspace }}/build/BRL-CAD*gz
+#         name: WixCMake_Linux
+#         path: ${{ github.workspace }}/build/WixCMake*gz
 
   osx:
     name: macOS Latest Clang
@@ -112,7 +115,7 @@ jobs:
 #     - name: Upload Package
 #       uses: actions/upload-artifact@v2
 #       with:
-#         name: BRLCAD_OSX
-#         path: ${{ github.workspace }}/build/BRL-CAD*gz
+#         name: WixCMake_OSX
+#         path: ${{ github.workspace }}/build/WixCMake*gz
 
 
