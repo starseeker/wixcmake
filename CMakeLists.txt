@@ -67,16 +67,7 @@ if (WIN32)
     endif(CMAKE_CL_64)
 
     # Custom add-ons from CMake build
-    list(APPEND CPACK_WIX_CANDLE_EXTRA_FLAGS -dBUILD_GUI=1)
-    set(CPACK_WIX_EXTRA_SOURCES
-      "${CMAKE_SOURCE_DIR}/wix/install_dir.wxs"
-      "${CMAKE_SOURCE_DIR}/wix/cmake_extra_dialog.wxs"
-      )
-    set(CPACK_WIX_UI_REF "CMakeUI_InstallDir")
-    set(CPACK_WIX_PATCH_FILE
-      "${CMAKE_SOURCE_DIR}/wix/patch_path_env.xml"
-      "${CMAKE_SOURCE_DIR}/wix/patch_desktop_shortcut.xml"
-      )
+    set(CPACK_WIX_PATCH_FILE "${CMAKE_SOURCE_DIR}/wix/working_path.xml")
   endif (Wix_FOUND)
 
 else ()
