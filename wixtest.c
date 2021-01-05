@@ -15,6 +15,11 @@ int main() {
 #endif
     if (cwd) {
 	printf("%s\n", cwd);
+#ifdef _WIN32
+	/* In Windows, keep the console window up so we can see the resulting
+	 * output. */
+	Sleep(10000);
+#endif
 	return 0;
     }
     return -1;
