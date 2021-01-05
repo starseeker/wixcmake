@@ -70,7 +70,9 @@ if (WIN32)
     list(APPEND CPACK_WIX_CANDLE_EXTRA_FLAGS -dBUILD_GUI=1)
     set(CPACK_WIX_EXTRA_SOURCES
       "${CMAKE_SOURCE_DIR}/wix/install_dir.wxs"
-      "${CMAKE_SOURCE_DIR}/wix/cmake_extra_dialog.wxs")
+      "${CMAKE_SOURCE_DIR}/wix/cmake_extra_dialog.wxs"
+      "${CMAKE_SOURCE_DIR}/wix/working_path.wxs"
+      )
     set(CPACK_WIX_UI_REF "CMakeUI_InstallDir")
     set(CPACK_WIX_PATCH_FILE
       "${CMAKE_SOURCE_DIR}/wix/patch_path_env.xml"
